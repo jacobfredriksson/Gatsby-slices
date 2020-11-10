@@ -1,10 +1,43 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import { graphql } from 'gatsby';
+import PizzaList from '../components/PizzaList';
+import {ToppingsFilter} from '../components/ToppingsFilter';
 
-export default function PizzaPage() {
+export default function PizzasPage({data}) {
+
+  const {pizzas} = data.data
   return (
     <>
-      <p> hi im the pizza page </p>
+      <ToppingsFilter />
+      <PizzaList pizzas={pizzas}/>
     </>
   );
 }
+
+export const query = graphql`
+  query PizzaQuery {
+    data: allSanityPizza {
+      pizzas: nodes {
+        name
+        id
+        slug {
+          current
+        }
+        toppings {
+          id
+          name
+        }
+        image {
+          asset {
+            fixed(width:200, height: 200) {
+              ...GatsbySanityImageFixed
+            }
+            fluid(maxWidth: 400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`;
