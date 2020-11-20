@@ -1,10 +1,30 @@
 import React from 'react';
+import { BeerList } from '../components/BeersList'
 
 
-export default function BeersPage() {
+export default function BeersPage({data}) {
+  const {nodes} = data.beers
+
   return (
     <>
-      <p> hi im the Beers Page </p>
+      <BeerList beers={nodes}/>
     </>
   );
 }
+
+
+export const query = graphql`
+  {
+    beers: allBeer {
+        nodes {
+        name
+        price
+        rating {
+          reviews
+          average
+        }
+        image
+      }
+    }
+  }
+`;

@@ -39,7 +39,7 @@ return (
 )
 }
 
-export default function PizzaList({pizzas}) {
+export const PizzaList = ({pizzas}) => {
 
   return <PizzaGridStyles>
    {pizzas.map((pizza) => (

@@ -1,4 +1,5 @@
 import path from 'path';
+import fetch from 'isomorphic-fetch'
 
 const turnPizzasIntoPages = async ({ graphql, actions }) => {
   // 1. Get a template for this page
@@ -54,9 +55,43 @@ const turnToppingsIntoPages = async ({ graphql, actions }) =>{
   })
 }
 
+const fetchBeersAndTurnIntoNodes = async ({actions, createNodeId, createContentDigest}) => {
+  console.log('🍻 turn beers into nodes! ')
+  const res = await fetch('https://sampleapis.com/beers/api/ale');
+  const beers = await res.json()
+
+  console.log(beers)
+  for (const beer of beers) {
+
+    const nodeMeta = {
+      id: createNodeId(`beer-${beer.name}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: 'Beer',
+        mediaType: 'application/json',
+        contentDigest: createContentDigest(beer),
+      }
+    }
+    actions.createNode({
+      ...beer,
+      ...nodeMeta
+    })
+  }
+
+
+}
+
+export const sourceNodes = async (params) => {
+  await Promise.all([fetchBeersAndTurnIntoNodes(params)])
+}
+
 export const createPages = async (params) => {
   await Promise.all([
     turnPizzasIntoPages(params),
     turnToppingsIntoPages(params)
   ])
 }
+
+
+
