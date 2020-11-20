@@ -30,12 +30,12 @@ const turnPizzasIntoPages = async ({ graphql, actions }) => {
 }
 
 const turnToppingsIntoPages = async ({ graphql, actions }) =>{
-  const toppingTemplate = path.resolve('./src/templates/Topping.js')
+  const toppingTemplate = path.resolve('./src/pages/pizzas.js')
   const { data } = await graphql(`
     query {
       topping: allSanityTopping {
         nodes {
-          vegetarian
+          id
           name
         }
       }
@@ -47,7 +47,8 @@ const turnToppingsIntoPages = async ({ graphql, actions }) =>{
       path: `topping/${topping.name}`,
       component: toppingTemplate,
       context: {
-        name: topping.name,
+        topping: topping.name,
+        toppingRegex: `/${topping.name}/i`
       },
     })
   })
