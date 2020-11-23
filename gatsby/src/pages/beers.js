@@ -18,7 +18,9 @@ export const query = graphql`
     beers: allBeer {
         nodes {
         name
+        id
         price
+        image
         rating {
           reviews
           average
