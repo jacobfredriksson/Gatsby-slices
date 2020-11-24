@@ -75,7 +75,6 @@ const { toppings, pizzas } = useStaticQuery(graphql`
 const toppingsWithCounts = countPizzasInToppings(pizzas.nodes)
 
 
-console.log( toppingsWithCounts)
   return <ToppingsStyles>
     <Link to="/pizzas">
       <span className="name"> All </span>
