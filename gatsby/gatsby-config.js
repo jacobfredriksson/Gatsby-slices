@@ -6,9 +6,11 @@ export default {
   siteMetadata: {
     title: `Slicks slices`,
     siteUrl: `https://gatsby.pizza`,
-    description: 'The best pizza place in Stockholm'
+    description: 'The best pizza place in Stockholm',
+    twitter: ' Jacobs twittering'
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-sanity',

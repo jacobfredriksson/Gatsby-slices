@@ -1,5 +1,6 @@
 import React from 'react';
 import { BeerList } from '../components/BeersList'
+import { SEO } from '../components/SEO';
 
 
 export default function BeersPage({data}) {
@@ -7,6 +8,7 @@ export default function BeersPage({data}) {
 
   return (
     <>
+      <SEO title={ `Beers! We have ${data.beers.nodes.length} in stock`}/>
       <BeerList beers={nodes}/>
     </>
   );
