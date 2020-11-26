@@ -9,26 +9,26 @@ export default function BeersPage({data}) {
   return (
     <>
       <SEO title={ `Beers! We have ${data.beers.nodes.length} in stock`}/>
-      <BeerList beers={nodes}/>
+      {/* <BeerList beers={nodes}/> */}
     </>
   );
 }
 
 
-export const query = graphql`
-  {
-    beers: allBeer {
-        nodes {
-        name
-        id
-        price
-        image
-        rating {
-          reviews
-          average
-        }
-        image
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   {
+//     beers: allBeer {
+//         nodes {
+//         name
+//         id
+//         price
+//         image
+//         rating {
+//           reviews
+//           average
+//         }
+//         image
+//       }
+//     }
+//   }
+// `;

@@ -11,7 +11,7 @@ export const PizzaOrder = ({order, pizzas, removeFromOrder }) => {
     <>
       {order.map((singleOrder, index) => {
         const pizza = pizzas.find(pizza => pizza.id === singleOrder.id)
-        return <MenuItemStyles key={singleOrder.id}>
+        return <MenuItemStyles key={`${singleOrder.id}-${index}`}>
           <Img fluid={pizza.image.asset.fluid}/>
           <h2> {singleOrder.name}</h2>
           <p>
