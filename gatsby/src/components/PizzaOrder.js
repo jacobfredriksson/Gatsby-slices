@@ -1,13 +1,12 @@
 import React from 'react';
-import {MenuItemStyles} from '../styles/MenuItemStyles'
+import { MenuItemStyles } from '../styles/MenuItemStyles'
 import Img from 'gatsby-image';
-import {formatMoney} from '../utils/formatMoney'
+import { formatMoney } from '../utils/formatMoney'
 import { calculatePizzaPrice } from '../utils/calculatePizzaPrice'
 
 
 
 export const PizzaOrder = ({order, pizzas, removeFromOrder }) => {
-  console.log(pizzas, order, removeFromOrder)
   return (
     <>
       {order.map((singleOrder, index) => {

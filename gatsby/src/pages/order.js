@@ -65,9 +65,11 @@ export default function OrderPage({data}) {
           ))}
         </fieldset>
         <fieldset className="order">
-          <legend > Order
-              <PizzaOrder order={order} removeFromOrder={removeFromOrder} pizzas={pizzas} />
+
+          <legend >
+            Order
           </legend>
+          <PizzaOrder order={order} removeFromOrder={removeFromOrder} pizzas={pizzas} />
         </fieldset>
       </OrderStyles>
     </>
