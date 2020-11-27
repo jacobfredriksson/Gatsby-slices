@@ -8,6 +8,7 @@ import {formatMoney} from '../utils/formatMoney'
 import {OrderStyles} from '../styles/OrderStyles'
 import {MenuItemStyles} from '../styles/MenuItemStyles'
 import { usePizza } from '../utils/usePizza';
+import { calculateOrderTotal } from '../utils/calculateOrderTotal';
 import { PizzaOrder } from '../components/PizzaOrder';
 
 
@@ -17,7 +18,7 @@ export default function OrderPage({data}) {
     email: ''
   })
   const pizzas = data.pizzas.nodes;
-  const { order, addToOrder, removeFromOrder } = usePizza({pizzas, inputs: values});
+  const { order, addToOrder, removeFromOrder, error, loading, message } = usePizza({pizzas, inputs: values});
   return (
     <>
       <SEO title="Order a pizza!"/>
@@ -65,11 +66,16 @@ export default function OrderPage({data}) {
           ))}
         </fieldset>
         <fieldset className="order">
-
           <legend >
             Order
           </legend>
           <PizzaOrder order={order} removeFromOrder={removeFromOrder} pizzas={pizzas} />
+        </fieldset>
+        <fieldset>
+          <h3>
+            Your Total Is {formatMoney(calculateOrderTotal(order,pizzas))}
+          </h3>
+          <button type="submit"> ORder ahead</button>
         </fieldset>
       </OrderStyles>
     </>

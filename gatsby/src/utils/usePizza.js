@@ -1,8 +1,10 @@
-import { useState, useContext } from 'react';
+import { useContext, useState } from 'react';
 import OrderContext from '../components/OrderContext'
 
 export const usePizza = ({ pizzas, inputs }) => {
   const [order, setOrder] = useContext(OrderContext);
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const addToOrder = (orderedPizza) => {
     console.log("addToOrder")
