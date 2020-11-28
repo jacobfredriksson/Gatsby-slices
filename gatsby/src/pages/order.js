@@ -27,7 +27,7 @@ export default function OrderPage({data}) {
     <>
       <SEO title="Order a pizza!"/>
       <OrderStyles onSubmit={submitOrder}>
-        <fieldset>
+        <fieldset disabled={loading}>
           <legend> Your Info </legend>
           <label htmlFor="name"> Name </label>
           <input
@@ -46,7 +46,7 @@ export default function OrderPage({data}) {
             id="email"
           />
         </fieldset>
-        <fieldset className="menu">
+        <fieldset className="menu" disabled={loading}>
           <legend > Menu</legend>
           {pizzas.map((pizza, i) => (
             <MenuItemStyles key={pizza.id}>
@@ -69,7 +69,7 @@ export default function OrderPage({data}) {
             </MenuItemStyles>
           ))}
         </fieldset>
-        <fieldset className="order">
+        <fieldset className="order" disabled={loading}>
           <legend >
             Order
           </legend>
