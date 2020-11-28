@@ -23,35 +23,43 @@ export const usePizza = ({ pizzas, values }) => {
     ])
   }
 
-  const submitOrder = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+  async function submitOrder(e) {
+    e.preventDefault();
+    console.log(e);
+    setLoading(true);
     setError(null);
     setMessage('');
 
-
+    // gather all the data
     const body = {
-      order: attachNamesAndPrices(order,pizzas),
-      total: formatMoney(calculateOrderTotal(order,pizzas)),
+      order: attachNamesAndPrices(order, pizzas),
+      total: formatMoney(calculateOrderTotal(order, pizzas)),
       name: values.name,
-      email: values.email
-    }
+      email: values.email,
+    };
 
-    const res = await fetch(`${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body)
-    });
-    const text = JSON.parse(await res.text())
 
-    if(res.status >= 400 && res.status < 600 ) {
-      setLoading(false);
+    // 4. Send this data the a serevrless function when they check out
+    const res = await fetch(
+      `${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+    const text = JSON.parse(await res.text());
+      console.log(text)
+    // check if everything worked
+    if (res.status >= 400 && res.status < 600) {
+      setLoading(false); // turn off loading
       setError(text.message);
     } else {
-      setLoading(false)
-      setMessage('Success! Come on down for your pizza')
+      // it worked!
+      setLoading(false);
+      setMessage('Success! Come on down for your pizza');
     }
   }
 

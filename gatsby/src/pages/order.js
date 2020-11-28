@@ -21,7 +21,7 @@ export default function OrderPage({data}) {
   const { order, addToOrder, removeFromOrder, error, loading, message, submitOrder } = usePizza({pizzas, values});
 
   if (message) {
-    return <p> message </p>
+    return <p> {message} </p>
   }
   return (
     <>
