@@ -16,13 +16,16 @@ const GlobalStyles = createGlobalStyle`
     background-attachment: fixed;
     font-size: 10px;
   }
+
   body {
     font-size: 2rem;
   }
+
   fieldset {
     border-color: rgba(0,0,0,0.1);
     border-width: 1px;
   }
+
   button {
     background: var(--red);
     color: white;
@@ -38,10 +41,12 @@ const GlobalStyles = createGlobalStyle`
       --cast: 4px;
     }
   }
+
   .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
   }
+
   /* Scrollbar Styles */
   body::-webkit-scrollbar {
     width: 12px;
@@ -58,20 +63,24 @@ const GlobalStyles = createGlobalStyle`
     border-radius: 6px;
     border: 3px solid var(--white);
   }
+
   hr {
     border: 0;
     height: 8px;
     background-image: url(${stripes});
     background-size: 1500px;
   }
+
   img {
     max-width: 100%;
   }
+
   .tilt {
     transform: rotate(-2deg);
     position: relative;
     display: inline-block;
   }
+
 `;
 
 export default GlobalStyles;

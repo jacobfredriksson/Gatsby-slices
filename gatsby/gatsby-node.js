@@ -131,7 +131,7 @@ const turnSlicemasterIntoPage = async ({graphql, actions}) => {
 }
 
 export const sourceNodes = async (params) => {
-  await Promise.all([fetchBeersAndTurnIntoNodes(params)])
+  // await Promise.all([fetchBeersAndTurnIntoNodes(params)])
 }
 
 export const createPages = async (params) => {
