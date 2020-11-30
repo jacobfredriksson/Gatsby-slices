@@ -15,7 +15,8 @@ import { PizzaOrder } from '../components/PizzaOrder';
 export default function OrderPage({data}) {
   const {values, updateValue } = useForm({
     name: '',
-    email: ''
+    email: '',
+    mapleSyrup: ''
   })
   const pizzas = data.pizzas.nodes;
   const { order, addToOrder, removeFromOrder, error, loading, message, submitOrder } = usePizza({pizzas, values});
@@ -44,6 +45,14 @@ export default function OrderPage({data}) {
             value={values.email}
             onChange={updateValue}
             id="email"
+          />
+          <input
+            type="mapleSyrup"
+            name="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValue}
+            id="mapleSyrup"
+            className="mapleSyrup"
           />
         </fieldset>
         <fieldset className="menu" disabled={loading}>

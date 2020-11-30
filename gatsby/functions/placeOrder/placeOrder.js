@@ -43,6 +43,13 @@ exports.handler = async (event, context) => {
   const body = JSON.parse(event.body)
   console.log(body)
 
+  if(body.mapleSyrup) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Boop beep bop zzzeet good bye ERROR.'})
+    }
+  }
+
   const requiredFields = ['email', 'name', 'order'];
 
   for(const field of requiredFields) {
