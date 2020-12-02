@@ -47,7 +47,6 @@ export const useLatestData = () => {
       })
     }).then(res => res.json()).then(res => {
       //Check for errors
-      console.log(res)
       setState({
         hotSlices: res.data.StoreSettings.hotSlices,
         slicemasters: res.data.StoreSettings.slicemasters
